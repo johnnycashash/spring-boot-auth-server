@@ -1,0 +1,26 @@
+server:
+  port: 9001
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    tomcat:
+      test-while-idle: true
+      validation-query: SELECT 1
+    initialization-mode: never
+    platform: postgres
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      ddl-auto: validate
+
+check-user-scopes: false
+certificate-path: jwt.jks
+certificate-password: password
+certificate-alias: jwt
