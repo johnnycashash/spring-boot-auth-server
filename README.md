@@ -1,4 +1,4 @@
 # spring-boot-auth-server
 
-![Token Request](postman1)
-![Token Request](postman2)
+![Token Request](postman1.png)
+![Token Request](postman2.png)
