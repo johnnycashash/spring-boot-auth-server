@@ -12,11 +12,22 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * The type Web security configuration.
+ */
 @Configuration
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
+    /**
+     * The Authentication provider.
+     */
     @Autowired
     CustomAuthenticationProvider authenticationProvider;
 
+    /**
+     * Password encoder password encoder.
+     *
+     * @return the password encoder
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();

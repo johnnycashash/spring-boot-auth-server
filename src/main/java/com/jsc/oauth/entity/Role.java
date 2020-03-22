@@ -5,6 +5,9 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * The type Role.
+ */
 @Entity
 @Data
 public class Role {

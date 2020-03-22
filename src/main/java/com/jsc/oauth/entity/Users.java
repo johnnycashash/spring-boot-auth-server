@@ -8,13 +8,16 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * The type Users.
+ */
 @Entity
 @Data
-public class Users implements UserDetails{
+public class Users implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+    private int id;
     private String email;
     private String username;
     private String password;

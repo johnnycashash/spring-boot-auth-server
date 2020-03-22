@@ -7,12 +7,21 @@ import org.springframework.security.authentication.AccountStatusUserDetailsCheck
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
+/**
+ * The type Custom user details service.
+ */
 @Service
 public class CustomUserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * Find by username users.
+     *
+     * @param input the input
+     * @return the users
+     */
     public Users findByUsername(String input) {
         Users users = userRepository.findByUsername(input);
 

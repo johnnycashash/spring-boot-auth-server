@@ -17,8 +17,14 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * The type Custom authentication provider.
+ */
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
+    /**
+     * The Custom user details service.
+     */
     @Autowired
     CustomUserDetailsService customUserDetailsService;
 

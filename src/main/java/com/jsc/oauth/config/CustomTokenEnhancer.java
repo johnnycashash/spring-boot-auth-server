@@ -15,6 +15,9 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * The type Custom token enhancer.
+ */
 public class CustomTokenEnhancer extends JwtAccessTokenConverter {
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
@@ -36,16 +39,16 @@ public class CustomTokenEnhancer extends JwtAccessTokenConverter {
         Map<UserApplicationInfo, List<RoleApplicationUser>> applicationInfoListMap = roleApplicationUsers.stream()
                 .filter(roleApplicationUser -> scope.contains(roleApplicationUser.getApplication().getName()))
                 .collect(Collectors.groupingBy(roleApplicationUser ->
-						new UserApplicationInfo(roleApplicationUser.getApplication().getName())));
+                        new UserApplicationInfo(roleApplicationUser.getApplication().getName())));
 
         applicationInfoListMap.forEach((userApplicationInfo, roleApplicationUsers1) -> {
             Map<RoleInfo, List<RoleApplicationUser>> roleInfoListMap = roleApplicationUsers1.stream()
-					.collect(Collectors.groupingBy(roleApplicationUser -> {
-                Role role = roleApplicationUser.getRole();
-                List<PermissionInfo> permissions = role.getPermissions().stream().map(permission ->
-						new PermissionInfo(permission.getName())).collect(Collectors.toList());
-                return new RoleInfo(role.getName(), permissions);
-            }));
+                    .collect(Collectors.groupingBy(roleApplicationUser -> {
+                        Role role = roleApplicationUser.getRole();
+                        List<PermissionInfo> permissions = role.getPermissions().stream().map(permission ->
+                                new PermissionInfo(permission.getName())).collect(Collectors.toList());
+                        return new RoleInfo(role.getName(), permissions);
+                    }));
             userApplicationInfo.setRoles(new ArrayList<>(roleInfoListMap.keySet()));
         });
 

@@ -1,17 +1,25 @@
 package com.jsc.oauth.repository;
 
-import javax.transaction.Transactional;
-
+import com.jsc.oauth.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.jsc.oauth.entity.Users;
+import javax.transaction.Transactional;
 
+/**
+ * The interface User repository.
+ */
 @Repository
 @Transactional
 public interface UserRepository extends JpaRepository<Users, Integer> {
 
-	Users findByUsername(String username);
+    /**
+     * Find by username users.
+     *
+     * @param username the username
+     * @return the users
+     */
+    Users findByUsername(String username);
 
 }
 
